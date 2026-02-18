@@ -1,6 +1,6 @@
 {
   "id": "com.midea.vacuum",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "compatibility": ">=12.0.0",
   "sdk": 3,
   "platforms": [
@@ -22,7 +22,14 @@
     "xlarge": "/assets/images/xlarge.png"
   },
   "tags": {
-    "en": ["midea", "vacuum", "robot", "msmarthome", "cleaning", "sweeper"]
+    "en": [
+      "midea",
+      "vacuum",
+      "robot",
+      "msmarthome",
+      "cleaning",
+      "sweeper"
+    ]
   },
   "permissions": [],
   "support": "https://github.com/ndgmedia/homey-midea-vacuum/issues",
