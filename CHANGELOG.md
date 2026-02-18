@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Improved
+- Dynamic polling intervals: 30 seconds when active, 5 minutes when docked
+- Reduced unnecessary API calls for better performance
+
 ### Added
 - Continuity for assets
 - Updated readme.txt
