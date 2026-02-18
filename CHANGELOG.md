@@ -1,14 +1,22 @@
 # Changelog
 
-## 1.0.0
+All notable changes to this project will be documented in this file.
 
-Initial release.
+## [Unreleased]
 
-- Pair Midea robot vacuums via MSmartHome cloud login
-- Control vacuum state: start cleaning, stop, dock, charge
-- Monitor battery level
-- Adjust fan speed (Quiet, Normal, Strong)
-- Adjust mopping water level (Low, Medium, High)
-- View cleaned area in m²
-- Automatic status polling every 30 seconds
-- Automatic token refresh on session expiry
+### Added
+- Continuity for assets
+- Updated readme.txt
+
+## [1.0.0] - 2026-02-18
+
+### Added
+- Initial release of Midea Vacuum for Homey
+- Control Midea robot vacuums via the MSmartHome cloud API
+- Support for vacuum state monitoring
+- Fan speed control
+- Water level control
+- Battery status monitoring
+- Cleaning area tracking
+- Device type 0xB8 support
+- MSmartHome account authentication

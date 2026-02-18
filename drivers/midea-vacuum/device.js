@@ -3,7 +3,8 @@
 const Homey = require('homey');
 const MideaCloud = require('../../lib/MideaCloud');
 
-const POLL_INTERVAL_MS = 30000;
+const POLL_INTERVAL_ACTIVE_MS = 30000;
+const POLL_INTERVAL_DOCKED_MS = 300000;
 
 // Cloud work_status → Homey vacuumcleaner_state
 const WORK_STATUS_TO_HOMEY = {
@@ -51,10 +52,8 @@ class MideaVacuumDevice extends Homey.Device {
 
     this._registerCapabilityListeners();
 
-    // Start polling
-    this.pollInterval = this.homey.setInterval(() => {
-      this._pollStatus().catch((err) => this.error('Poll error:', err.message));
-    }, POLL_INTERVAL_MS);
+    // Start polling with dynamic interval
+    this._startPolling();
 
     // Initial poll
     await this._pollStatus().catch((err) => this.error('Initial poll error:', err.message));
@@ -156,6 +155,22 @@ class MideaVacuumDevice extends Homey.Device {
     });
   }
 
+  _startPolling() {
+    this._poll();
+  }
+
+  async _poll() {
+    await this._pollStatus().catch((err) => this.error('Poll error:', err.message));
+
+    const currentState = this.getCapabilityValue('vacuumcleaner_state');
+    const interval = currentState === 'docked' ? POLL_INTERVAL_DOCKED_MS : POLL_INTERVAL_ACTIVE_MS;
+
+    if (this.pollInterval) {
+      this.homey.clearTimeout(this.pollInterval);
+    }
+    this.pollInterval = this.homey.setTimeout(() => this._poll(), interval);
+  }
+
   async _pollStatus() {
     try {
       const status = await this.cloud.queryStatus(this.applianceId);
@@ -234,14 +249,14 @@ class MideaVacuumDevice extends Homey.Device {
 
   async onUninit() {
     if (this.pollInterval) {
-      this.homey.clearInterval(this.pollInterval);
+      this.homey.clearTimeout(this.pollInterval);
       this.pollInterval = null;
     }
   }
 
   onDeleted() {
     if (this.pollInterval) {
-      this.homey.clearInterval(this.pollInterval);
+      this.homey.clearTimeout(this.pollInterval);
       this.pollInterval = null;
     }
   }

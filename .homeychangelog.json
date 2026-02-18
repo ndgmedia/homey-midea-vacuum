@@ -1,8 +1,8 @@
 {
   "1.0.0": {
-    "en": "## 1.0.0"
+    "en": "Initial release of Midea Vacuum for Homey. Control Midea robot vacuums via the MSmartHome cloud API. Supports vacuum state monitoring, fan speed control, water level control, battery status, and cleaning area tracking."
   },
   "1.0.1": {
-    "en": "### Added"
+    "en": "Added continuity for assets and updated readme.txt"
   }
 }
