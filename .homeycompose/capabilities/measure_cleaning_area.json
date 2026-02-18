@@ -1,0 +1,16 @@
+{
+  "type": "number",
+  "title": {
+    "en": "Cleaning Area"
+  },
+  "units": {
+    "en": "m\u00b2"
+  },
+  "uiComponent": "sensor",
+  "getable": true,
+  "setable": false,
+  "insights": true,
+  "min": 0,
+  "max": 999,
+  "step": 1
+}
