@@ -11,7 +11,7 @@
     "en": "Midea Vacuum"
   },
   "description": {
-    "en": "Control your Midea robot vacuum from Homey. Start, stop, dock, adjust fan speed and water level, and monitor battery and cleaning area via the MSmartHome cloud."
+    "en": "Control Midea vacuum via cloud API"
   },
   "category": [
     "appliances"
